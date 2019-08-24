@@ -1,54 +1,7 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import {Header} from './components/Header';
-
-
-
-class Counter extends React.Component {
-  state = {
-    score: 0,
-    a: 10
-  }
-
-  constructor() {
-    super();
-    this.handleChangeScore = this.handleChangeScore.bind(this);
-    //this.handleRemovePlayer = this.handleRemovePlayer.bind(this);
-
-  }
-
-  handleChangeScore(delta) {
-    console.log('incrementScore ---> ', this);
-
-    this.setState((prevState) => ({score: prevState.score + delta}));
-
-  }
-
-  render() {
-    return (
-      <div className="counter">
-
-        <button className="counter-action decrement" onClick={() => this.handleChangeScore(-1)}> -</button>
-        <span className="counter-score">{this.state.score}</span>
-        <button className="counter-action increment" onClick={() => this.handleChangeScore(1)}> +</button>
-      </div>
-    );
-  }
-
-}
-
-const Player = (props) => (
-  <div className="player">
-		<span className="player-name">
-																					{/* 2. 자식에게 콜백함수를 props로 전달  */}
-      <button className="remove-player" onClick={() => props.removePlayer(props.id)}> x </button>
-      {props.name}
-		</span>
-    <Counter />
-  </div>
-);
-
+import { Header } from './components/Header';
+import { Player } from './components/Player';
 
 class App extends React.Component {
   state = {
@@ -59,35 +12,36 @@ class App extends React.Component {
       {name: 'PARK', id: 4},
     ]
   }
-
+  constructor() {
+    super();
+    this.handleRemovePlayer = this.handleRemovePlayer.bind(this);
+  }
   render() {
     return (
       <div className="scoreboard">
-        <Header title='My Scoreboard' totalPlayers={11}/>
+        <Header title="My Scoreboard" totalPlayers={11} />
+
+        {/*Player List*/}
         {
-          this.state.players.map(player => (								 	// 3. 클릭시 자식이 콜백함수를 호출
-              <Player name={player.name} key={player.id} id={player.id} removePlayer={this.handleRemovePlayer} />
+          this.state.players.map(player => {
+            return (
+              <Player name={player.name} key={player.id}
+                      id={player.id}
+                      removePlayer={this.handleRemovePlayer}/>
             )
-          )
+          })
         }
       </div>
     )
   }
-
-  //1. 부모에서 삭제하는 콜백함수를 만듦
-  handleRemovePlayer = (id) =>  {
+  handleRemovePlayer(id) {
+    console.log(this);
     console.log('handleRemovePlayer', id);
     this.setState(prevState => {
       const players = prevState.players.filter(player => player.id !== id)
-      return {players:players}
+      return {players}
     })
   }
-
 }
-
-
-
-
-
 
 export default App;
