@@ -1,10 +1,6 @@
 import React from "react";
 
 export class Counter extends React.Component {
-	state = {
-		score: 0,
-		a: 10
-	}
 	constructor() {
 		super();
 		this.handleChangeScore = this.handleChangeScore.bind(this);
