@@ -15,6 +15,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.handleRemovePlayer = this.handleRemovePlayer.bind(this);
+    this.handleChangeScore = this.handleChangeScore.bind(this);
   }
   render() {
     return (
@@ -28,6 +29,7 @@ class App extends React.Component {
               <Player name={player.name} key={player.id}
                       id={player.id}
                       score={player.score}
+                      changeScore={this.handleChangeScore}
                       removePlayer={this.handleRemovePlayer}/>
             )
           })
@@ -42,6 +44,19 @@ class App extends React.Component {
       const players = prevState.players.filter(player => player.id !== id)
       return {players}
     })
+  }             // player의 id값
+  handleChangeScore(id, delta) {
+    console.log(id, delta);
+    this.setState(prevState => {
+      // id에 해당되는 player를 찾고 score에 delta를 더한다.
+      const players = [ ...prevState.players ];
+      players.forEach(player => {
+        if (player.id === id) {
+          player.score += delta;
+        }
+      })              // 원본 배열은 유지하되 새로운 배열을 위한 공간 활용 ->  //  [ ... ] 브라켓 안에 스프레드 연산자 사용
+      return {players}
+    });
   }
 }
 
