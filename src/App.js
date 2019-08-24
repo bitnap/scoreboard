@@ -1,32 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-/*
-function App() {
-  return (
-    <div className="App">
-      hi
-    </div>
-  );
-}
-*/
+import {Header} from './components/Header';
 
-
-
-// 삭제함수
-
-const Header = (props) => {
-  console.log(props);
-  const {title, totalPlayers} = props;
-
-  return (
-    <header className="header">
-      <h1 className="h1">{title}</h1>
-      <span className="stats">Players: {totalPlayers}</span>
-      {props.children}
-    </header>
-  );
-}
 
 
 class Counter extends React.Component {
