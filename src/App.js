@@ -13,6 +13,8 @@ class App extends React.Component {
       {name: 'PARK', score: 30, id: 4},
     ]
   }
+  maxId = 4;
+
   constructor() {
     super();
     this.handleRemovePlayer = this.handleRemovePlayer.bind(this);
@@ -35,7 +37,8 @@ class App extends React.Component {
             )
           })
         }
-        <AddPlayerForm />
+        {/*// 2) 콜백함수를 props로 내려주기*/}
+        <AddPlayerForm addPlayer={this.handleAddPlayer}/>
       </div>
     )
   }
@@ -59,6 +62,20 @@ class App extends React.Component {
       })
       return {players}
     })
+  }
+  // 1) 콜백함수 정의
+  handleAddPlayer = (name) => {
+    console.log(name);
+    // add player 로직이 들어올 부분
+    this.setState(prevState => {
+      // 원본배열 훼손없이 deep copy 를 해야함
+      const players = [ ...prevState.players ];   // 상위 players[] 배열 훼손없이 카피했음.
+
+      players.push({name:name, score:0, id:++this.maxId}); // 원본배열에 새로운 배열 추가부분 push - 뒤에추가, unshift - 앞에 추가
+                                                                                      // pop - 뒤에것 삭제, shift - 맨 앞에것 삭제
+      return {players};
+    });
+
   }
 }
 
