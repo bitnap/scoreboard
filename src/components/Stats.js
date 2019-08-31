@@ -1,9 +1,10 @@
 import React from 'react';
 
-export const Stats = (props) => {
-	// todo: 로직구현
-	const totalPlayers = 0; // props.players 로 로직구현;
-	const totalScore = 0; // props.players 로 로직구현//
+export const Stats = ({players}) => {
+	const totalPlayers = players.length; // props.players 로 로직구현;
+	let totalScore = 0; // props.players 로 로직구현//
+	players.forEach(player => totalScore += player.score);
+
 	return (
 		<table className="stats">
 			<tbody>
@@ -13,7 +14,7 @@ export const Stats = (props) => {
 			</tr>
 			<tr>
 				<td>Total Points:</td>
-				<td>{totalPlayers}</td>
+				<td>{totalScore}</td>
 			</tr>
 			</tbody>
 		</table>

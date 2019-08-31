@@ -3,19 +3,19 @@ import { Counter } from './Counter';
 
 export class Player extends React.Component {
 	render() {
-
-
 		console.log(this.props.name, ' rendered');	// 사용자 한명만 컨트롤해도 사용자 모두 렌더링 되는 문제를 해결예정
+
+		const {removePlayer, id, name, score, changeScore} = this.props;
 
 		return (
 			<div className="player">
-		<span className="player-name">
-			<button className="remove-player" onClick={() => this.props.removePlayer(this.props.id)}> x </button>
-			{this.props.name}
-		</span>
-				<Counter score={this.props.score}
-								 id={this.props.id}
-								 changeScore={this.props.changeScore}
+				<span className="player-name">
+					<button className="remove-player" onClick={() => removePlayer(id)}> x </button>
+					{name}
+				</span>
+				<Counter score={score}
+								 id={id}
+								 changeScore={changeScore}
 				/>
 			</div>
 		)
