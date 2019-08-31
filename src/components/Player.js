@@ -1,7 +1,7 @@
 import React from "react";
 import { Counter } from './Counter';
 
-export class Player extends React.PureComponent {
+export class Player extends React.Component {
 	render() {
 
 
@@ -20,4 +20,11 @@ export class Player extends React.PureComponent {
 			</div>
 		)
 	}
+	shouldComponentUpdate(nextProps, nextState, nextContext) {
+		console.log(nextProps);
+		// score가 다를 경우에만 true를 반환
+		return this.props.score !== nextProps.score;
+		// return true;
+	}
+
 }
