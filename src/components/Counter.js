@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export class Counter extends React.Component {
 	constructor() {
@@ -24,4 +25,10 @@ export class Counter extends React.Component {
 			</div>
 		)
 	}
+}
+
+Counter.propTypes = {
+	score: PropTypes.number,
+	id: PropTypes.number,
+	changeScore: PropTypes.func
 }
