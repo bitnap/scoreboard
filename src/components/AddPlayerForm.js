@@ -16,7 +16,7 @@ export class AddPlayerForm extends React.Component {
 
 		// 3) 부모에게서 받은 콜백함수를 호출
 		// document.getElementById("player"); === this.textInput.current.value
-		this.props.addPlayer(this.textInput.current.value);
+		// this.props.addPlayer(this.textInput.current.value);
 
 
 	}
