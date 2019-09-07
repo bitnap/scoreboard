@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import * as serviceWorker from './serviceWorker';
 import {store} from "./redux/reducers/store";
 import {Provider} from "react-redux";
 import {Root} from "./pages/Root";
+
+import 'bootstrap/dist/css/bootstrap.css';	// <-- bootstrap
+import './index.css'; // <-- 사용자가 만든 css
 
 ReactDOM.render(<Provider store={store}><Root /></Provider>, document.getElementById('root'));
 
