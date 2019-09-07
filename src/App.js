@@ -6,6 +6,17 @@ import {connect} from "react-redux";
 import {CustomPlayer} from "./components/CustomPlayer";
 
 class App extends React.Component {
+  getHighScore() {
+    let highScore = 0;
+    this.props.players.forEach(player => {
+      if (player.score > highScore) {
+        highScore = player.score;
+      }
+    });
+    return highScore;
+
+  }
+
   render() {
     return (
       <div className="scoreboard">
@@ -18,8 +29,7 @@ class App extends React.Component {
               <CustomPlayer name={player.name} key={player.id}
                       id={player.id}
                       score={player.score}
-                      // changeScore={this.handleChangeScore}
-                      removePlayer={this.handleRemovePlayer} />
+                      isHighScore={player.score === this.getHighScore ()} />
             )
           })
         }
