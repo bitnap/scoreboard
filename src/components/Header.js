@@ -3,14 +3,17 @@ import {Stats} from "./Stats";
 import Stopwatch from "./Stopwatch";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import styles from '../pages/Scoreboard.module.css';
+
+
 
 // 펑션 컴포넌트는 반드시 대문자로 시작
 // react element를 리턴해야 한다.
 const Header = ({title, players}) => {
 	return (
-		<header className="header">
+		<header className={styles.header}>
 			<Stats players={players} />
-			<h1 className="h1">{title}</h1>
+			<h1 className={styles.h1}>{title}</h1>
 			<Stopwatch />
 		</header>
 	);

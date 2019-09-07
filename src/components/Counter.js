@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import {changeScore} from "../redux/actions";
 import {connect} from "react-redux";
 
+import styles from '../pages/Scoreboard.module.css';
+import classNames from 'classnames';
+
 class Counter extends React.Component {
 	constructor() {
 		super();
@@ -19,11 +22,11 @@ class Counter extends React.Component {
 	// 이벤트의 오른쪽은 함수 선언문이 들어가야 한다.
 	render() {
 		return (
-			<div className="counter">
-				<button className="counter-action decrement"
+			<div className={styles.counter}>
+				<button className={classNames(styles.counterAction, styles.decrement)}
 								onClick={() => this.props.changeScore(this.props.id, -1)}> - </button>
-				<span className="counter-score">{this.props.score}</span>
-				<button className="counter-action increment" onClick={() => this.props.changeScore(this.props.id, 1)}> + </button>
+				<span className={styles.counterScore}>{this.props.score}</span>
+				<button className={classNames(styles.counterAction, styles.increment)} onClick={() => this.props.changeScore(this.props.id, 1)}> + </button>
 			</div>
 		)
 	}

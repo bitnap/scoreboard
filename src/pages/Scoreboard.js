@@ -3,7 +3,9 @@ import Header from "../components/Header";
 import {CustomPlayer} from "../components/CustomPlayer";
 import AddPlayerForm from "../components/AddPlayerForm";
 import {connect} from "react-redux";
-import './Scoreboard.css';
+
+// import한 css는 글로벌로 뿌림
+import styles from './Scoreboard.module.css';
 
 class Scoreboard extends React.Component {
 	getHighScore() {
@@ -19,7 +21,7 @@ class Scoreboard extends React.Component {
 
 	render() {
 		return (
-			<div className="scoreboard">
+			<div className={styles.scoreboard}>
 				<Header title="My Scoreboard" players={this.props.players} />
 
 				{/*Player List*/}
