@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {removePlayer} from "../redux/actions";
 
-class Player extends React.Component {
+class Player extends React.PureComponent {
 	static propTypes = {
 		id: PropTypes.number,
 		name: PropTypes.string,
@@ -32,12 +32,12 @@ class Player extends React.Component {
 			</div>
 		)
 	}
-	shouldComponentUpdate(nextProps, nextState, nextContext) {
-		console.log(nextProps);
-		// score가 다를 경우에만 true를 반환
-		return this.props.score !== nextProps.score;
-		// return true;
-	}
+	// shouldComponentUpdate(nextProps, nextState, nextContext) {
+	// 	console.log(nextProps);
+	// 	// score가 다를 경우에만 true를 반환
+	// 	return this.props.score !== nextProps.score;
+	// 	// return true;
+	// }
 
 }
 
