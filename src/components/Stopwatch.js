@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {updateTitle} from "../redux/actions";
 
 export class Stopwatch extends React.Component {
 	tickRef;
@@ -23,6 +25,7 @@ export class Stopwatch extends React.Component {
 				<span className="stopwatch-time">{this.state.timer}</span>
 				<button onClick={this.handleStopwatch}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
 				<button onClick={this.handleReset}>Reset</button>
+				<button onClick={() => this.props.updateTitle('redux score')}>title change</button>
 			</div>
 		)
 	}
@@ -47,3 +50,12 @@ export class Stopwatch extends React.Component {
 	}
 
 }
+
+
+const mapActionToProps = (dispatch) => ({
+	updateTitle: (title) => dispatch(updateTitle(title))
+
+})
+
+// 위에서 mapping한 결과를 아래에서 connect 시켜줘야함
+export default connect(null, mapActionToProps)(Stopwatch);

@@ -1,5 +1,5 @@
 // 1)  src > redux > reducers  하위에 player.js 생성
-import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "../actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, UPDATE_TITLE, REMOVE_PLAYER} from "../actionTypes";
 
 let maxId = 4;	// 점점 추가되야되는 변수이므로 const 가 아닌 let 으로 변수선언
 const playerInitialState = {
@@ -46,6 +46,12 @@ export const playerReducer = (state = playerInitialState, action) => { // state 
 				players: [
 					...state.players
 				]
+			}
+
+		case UPDATE_TITLE:
+			state.title = action.title;
+			return {
+				...state
 			}
 
 		default:
