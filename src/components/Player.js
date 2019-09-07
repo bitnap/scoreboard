@@ -3,6 +3,14 @@ import { Counter } from './Counter';
 import PropTypes from "prop-types";
 
 export class Player extends React.Component {
+	static propTypes = {
+		id: PropTypes.number,
+		name: PropTypes.string,
+		score: PropTypes.number,
+		removePlayer: PropTypes.func,
+		changeScore: PropTypes.func
+	}
+
 	render() {
 		console.log(this.props.name, ' rendered');	// 사용자 한명만 컨트롤해도 사용자 모두 렌더링 되는 문제를 해결예정
 
@@ -30,11 +38,11 @@ export class Player extends React.Component {
 
 }
 
-// 		const {removePlayer, id, name, score, changeScore} = this.props;
-Player.propTypes = {
-	id: PropTypes.number,
-	name: PropTypes.string,
-	score: PropTypes.number,
-	removePlayer: PropTypes.func,
-	changeScore: PropTypes.func
-}
+// // 		const {removePlayer, id, name, score, changeScore} = this.props;
+// Player.propTypes = {
+// 	id: PropTypes.number,
+// 	name: PropTypes.string,
+// 	score: PropTypes.number,
+// 	removePlayer: PropTypes.func,
+// 	changeScore: PropTypes.func
+// }
