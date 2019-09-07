@@ -3,17 +3,10 @@ import './App.css';
 import { Header } from './components/Header';
 import { Player } from './components/Player';
 import { AddPlayerForm } from './components/AddPlayerForm';
+import {connect} from "react-redux";
 
 class App extends React.Component {
-  state = {
-    players: [
-      {name: 'LDK', score: 0, id: 1},
-      {name: 'HONG', score: 10, id: 2},
-      {name: 'KIM', score: 20, id: 3},
-      {name: 'PARK', score: 30, id: 4},
-    ]
-  }
-  maxId = 4;
+
 
   constructor() {
     super();
@@ -23,11 +16,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="scoreboard">
-        <Header title="My Scoreboard" players={this.state.players} />
+        <Header title="My Scoreboard" players={this.props.players} />
 
         {/*Player List*/}
         {
-          this.state.players.map(player => {
+          this.props.players.map(player => {
             return (
               <Player name={player.name} key={player.id}
                       id={player.id}
@@ -79,4 +72,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  players: state.playerReducer.players
+})
+
+export default connect(mapStateToProps)(App);
