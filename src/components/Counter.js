@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {changeScore} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class Counter extends React.Component {
+class Counter extends React.Component {
 	constructor() {
 		super();
 		// this.handleChangeScore = this.handleChangeScore.bind(this);
@@ -32,3 +34,14 @@ Counter.propTypes = {
 	id: PropTypes.number,
 	changeScore: PropTypes.func
 }
+
+
+
+const mapActionToProps = (dispatch) => ({
+	changeScore: (id, delta) => dispatch(changeScore(id, delta))
+})
+
+export default connect(null, mapActionToProps)(Counter);
+
+
+// export default Counter;
