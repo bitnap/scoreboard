@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import { Player } from './components/Player';
-import { AddPlayerForm } from './components/AddPlayerForm';
+import AddPlayerForm from './components/AddPlayerForm';
 import {connect} from "react-redux";
 
 class App extends React.Component {

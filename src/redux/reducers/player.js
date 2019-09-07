@@ -11,5 +11,19 @@ const playerInitialState = {
 }
 										// state = 위에서 정의한 playerInitialState JSON 객체값으로 초기화
 export const playerReducer = (state = playerInitialState, action) => { // state 와 action을 매개체로 받아서 새로운 값을  return
+	switch (action.type) {
+		case 'ADD_PLAYER':
+
+			// 기존 players에 name을 가진 player 객체를 추가
+			state.players.push({name:action.name, score:0, id:++maxId})
+			return {
+				...state,
+				players: [
+					...state.players
+				]
+			}
+		default:
+			return state;
+	}
 	return state;
 }
